@@ -7,43 +7,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <style>
-/* ── ÉCRAN MOT DE PASSE ── */
-#mdp-overlay{
-  position:fixed;inset:0;z-index:9999;
-  background:var(--bleu,#2C3A8C);
-  display:flex;align-items:center;justify-content:center;
-}
-#mdp-box{
-  background:#fff;border-radius:14px;padding:2.5rem 2rem;
-  max-width:360px;width:90%;text-align:center;
-  box-shadow:0 8px 32px rgba(0,0,0,.25);
-}
-#mdp-box .logo-mdp{
-  font-family:'Bebas Neue',sans-serif;font-size:1rem;
-  letter-spacing:.2em;background:#F5C400;color:#2C3A8C;
-  display:inline-block;padding:.25rem .9rem;border-radius:3px;margin-bottom:1rem;
-}
-#mdp-box h2{
-  font-family:'Bebas Neue',sans-serif;font-size:1.5rem;
-  color:#2C3A8C;margin-bottom:.3rem;
-}
-#mdp-box p{font-size:.85rem;color:#666;margin-bottom:1.2rem;}
-#mdp-input{
-  width:100%;padding:.6rem .9rem;border:1.5px solid #ddd;
-  border-radius:8px;font-size:1rem;text-align:center;
-  letter-spacing:.15em;margin-bottom:.8rem;
-  font-family:'DM Sans',sans-serif;outline:none;
-  transition:border-color .2s;
-}
-#mdp-input:focus{border-color:#2C3A8C;}
-#mdp-btn{
-  width:100%;padding:.65rem;background:#2C3A8C;color:#fff;
-  border:none;border-radius:8px;font-size:.95rem;font-weight:600;
-  cursor:pointer;font-family:'DM Sans',sans-serif;transition:background .2s;
-}
-#mdp-btn:hover{background:#1e2a6e;}
-#mdp-err{color:#B71C1C;font-size:.82rem;margin-top:.5rem;display:none;}
-</style>
 :root{--bleu:#2C3A8C;--jaune:#F5C400;--blanc:#FFFFFF;--gris:#F4F4F0;--texte:#1A1A2E;--doux:#E8E4DC}
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
 body{font-family:'DM Sans',sans-serif;background:var(--gris);color:var(--texte);font-size:16px;line-height:1.7}
@@ -133,33 +96,6 @@ footer strong{color:var(--jaune)}
 </style>
 </head>
 <body>
-
-<!-- ── MOT DE PASSE ── -->
-<div id="mdp-overlay">
-  <div id="mdp-box">
-    <div class="logo-mdp">SMM MONTROUGE · BADMINTON</div>
-    <h2>Assemblée Générale 2026</h2>
-    <p>Veuillez saisir le mot de passe pour accéder à cette page.</p>
-    <input id="mdp-input" type="password" placeholder="Mot de passe"
-           onkeydown="if(event.key==='Enter')verifier()"/>
-    <button id="mdp-btn" onclick="verifier()">Accéder</button>
-    <p id="mdp-err">Mot de passe incorrect. Veuillez réessayer.</p>
-  </div>
-</div>
-
-<script>
-function verifier(){
-  var v=document.getElementById('mdp-input').value;
-  if(v==='AGSMM2026'){
-    document.getElementById('mdp-overlay').style.display='none';
-  } else {
-    document.getElementById('mdp-err').style.display='block';
-    document.getElementById('mdp-input').value='';
-    document.getElementById('mdp-input').focus();
-  }
-}
-</script>
-<!-- ── FIN MOT DE PASSE ── -->
 <header>
   <div class="logo-hdr">SMM MONTROUGE · BADMINTON</div>
   <h1>Assemblée Générale<br><span>5 Juin 2026</span></h1>
@@ -170,13 +106,15 @@ function verifier(){
   <div class="som-t">Ordre du jour</div>
   <div class="som-l">
     <a href="#bilan">1. Bilan</a>
+    <a href="#rem">↳ Remerciements</a>
     <a href="#pops">↳ Populations</a>
     <a href="#equipes">↳ Équipes</a>
     <a href="#fin">↳ Finances</a>
     <a href="#com">↳ Communication</a>
     <a href="#elec">2. Élections</a>
-    <a href="#saison">3. Saison 26-27</a>
-    <a href="#parole">4. Parole adhérents</a>
+    <a href="#approbation">3. Approbation</a>
+    <a href="#saison">4. Saison 26-27</a>
+    <a href="#parole">5. Parole adhérents</a>
   </div>
 </nav>
 
@@ -185,7 +123,11 @@ function verifier(){
 <section id="bilan">
   <div class="snum">01</div>
   <h2>Bilan de l'année écoulée</h2>
-  <h3>Remerciements</h3>
+</section>
+
+<section id="rem">
+  <div class="snum sub">01.1</div>
+  <h2>Remerciements</h2>
   <p><strong>Bureau :</strong></p>
   <div class="bg"><span class="b">Alexandre</span><span class="b">Delphine</span><span class="b">Ewan</span><span class="b">Marie</span><span class="b">Victor</span><span class="b">Cariane</span><span class="b">Cécile</span><span class="b">Damien</span><span class="b">Owen</span></div>
   <p style="margin-top:.8rem"><strong>Bénévoles :</strong></p>
@@ -197,7 +139,7 @@ function verifier(){
 </section>
 
 <section id="pops">
-  <div class="snum sub">01.1</div>
+  <div class="snum sub">01.2</div>
   <h2>Populations du club — 299 adhérents</h2>
   <div class="seg-w" id="sgp">
     <button class="seg-b on" onclick="fp('all',this)">Tous (299)</button>
@@ -221,7 +163,7 @@ function verifier(){
 </section>
 
 <section id="equipes">
-  <div class="snum sub">01.2</div>
+  <div class="snum sub">01.3</div>
   <h2>Résultats des équipes interclubs</h2>
   <div class="eg">
     <div class="ec"><div class="en">Équipe 1</div><div class="cap">Yu-Fat</div></div>
@@ -236,7 +178,7 @@ function verifier(){
 </section>
 
 <section id="fin">
-  <div class="snum sub">01.3</div>
+  <div class="snum sub">01.4</div>
   <h2>Bilan financier — Atterrissage au 16 avril 2026</h2>
   <div class="rtot">
     <div class="rtc rr"><div class="rl">Total Recettes</div><div class="rv">85 607 €</div></div>
@@ -275,7 +217,7 @@ function verifier(){
 </section>
 
 <section id="com">
-  <div class="snum sub">01.4</div>
+  <div class="snum sub">01.5</div>
   <h2>Communication</h2>
   <div class="comg">
     <div class="comc"><div class="cn">WhatsApp</div><ul><li>4 groupes de niveau</li><li>Groupe ouverture créneaux</li><li>Groupe info club</li><li>Groupe FAQ</li></ul></div>
@@ -293,11 +235,17 @@ function verifier(){
     <div class="elc arr"><div class="ll">Élus à l'unanimité</div><div class="nn">Gaëlle Rondepierre</div><div class="nn">Marine Fergueau</div><div class="nn">Marion Labourot</div><p style="font-size:.74rem;color:#2E7D32;margin-top:.4rem">Bienvenue au bureau !</p></div>
   </div>
   <p style="font-size:.78rem;color:#666;margin-top:1rem;font-style:italic;background:var(--gris);padding:.7rem 1rem;border-radius:6px;">Dans le cas où le quorum ne serait pas atteint (1/3 des membres présents en comptabilisant les pouvoirs : 299/3 = 99), une assemblée générale extraordinaire comportant le même ordre du jour se tiendra immédiatement après l'assemblée générale sans condition de quorum.</p>
+</section>
+
+<section id="approbation" class="ja">
+  <div class="snum">03</div>
+  <h2>Approbation du bilan moral et du bilan financier</h2>
+  <p style="font-size:.78rem;color:#666;font-style:italic;background:var(--gris);padding:.7rem 1rem;border-radius:6px;">Dans le cas où le quorum ne serait pas atteint (1/3 des membres présents en comptabilisant les pouvoirs : 299/3 = 99), une assemblée générale extraordinaire comportant le même ordre du jour se tiendra immédiatement après l'assemblée générale sans condition de quorum.</p>
   <p style="font-size:.78rem;color:#666;margin-top:.5rem;font-style:italic;background:var(--gris);padding:.7rem 1rem;border-radius:6px;">Le bilan moral, le bilan financier ainsi que les nouvelles arrivées au bureau sont approuvés à l'unanimité. Personne ne vote contre, personne ne s'abstient.</p>
 </section>
 
 <section id="saison">
-  <div class="snum">03</div>
+  <div class="snum">04</div>
   <h2>Actualités & Saison 2026-2027</h2>
   <h3>Gymnase</h3>
   <p>Retour au <strong>Gymnase Rabelais</strong> dès septembre 2026.</p>
@@ -363,7 +311,7 @@ function verifier(){
 </section>
 
 <section id="parole" class="ja">
-  <div class="snum">04</div>
+  <div class="snum">05</div>
   <h2>La Parole aux Adhérents</h2>
   <p>Questions, remarques et suggestions.</p>
   <div style="background:var(--gris);border-radius:8px;padding:1.2rem;margin-top:.8rem;min-height:60px;color:#999;font-style:italic;font-size:.88rem;">Cette section sera complétée lors de l'assemblée générale.</div>
