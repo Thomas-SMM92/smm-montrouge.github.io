@@ -7,6 +7,43 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <style>
+/* ── ÉCRAN MOT DE PASSE ── */
+#mdp-overlay{
+  position:fixed;inset:0;z-index:9999;
+  background:var(--bleu,#2C3A8C);
+  display:flex;align-items:center;justify-content:center;
+}
+#mdp-box{
+  background:#fff;border-radius:14px;padding:2.5rem 2rem;
+  max-width:360px;width:90%;text-align:center;
+  box-shadow:0 8px 32px rgba(0,0,0,.25);
+}
+#mdp-box .logo-mdp{
+  font-family:'Bebas Neue',sans-serif;font-size:1rem;
+  letter-spacing:.2em;background:#F5C400;color:#2C3A8C;
+  display:inline-block;padding:.25rem .9rem;border-radius:3px;margin-bottom:1rem;
+}
+#mdp-box h2{
+  font-family:'Bebas Neue',sans-serif;font-size:1.5rem;
+  color:#2C3A8C;margin-bottom:.3rem;
+}
+#mdp-box p{font-size:.85rem;color:#666;margin-bottom:1.2rem;}
+#mdp-input{
+  width:100%;padding:.6rem .9rem;border:1.5px solid #ddd;
+  border-radius:8px;font-size:1rem;text-align:center;
+  letter-spacing:.15em;margin-bottom:.8rem;
+  font-family:'DM Sans',sans-serif;outline:none;
+  transition:border-color .2s;
+}
+#mdp-input:focus{border-color:#2C3A8C;}
+#mdp-btn{
+  width:100%;padding:.65rem;background:#2C3A8C;color:#fff;
+  border:none;border-radius:8px;font-size:.95rem;font-weight:600;
+  cursor:pointer;font-family:'DM Sans',sans-serif;transition:background .2s;
+}
+#mdp-btn:hover{background:#1e2a6e;}
+#mdp-err{color:#B71C1C;font-size:.82rem;margin-top:.5rem;display:none;}
+</style>
 :root{--bleu:#2C3A8C;--jaune:#F5C400;--blanc:#FFFFFF;--gris:#F4F4F0;--texte:#1A1A2E;--doux:#E8E4DC}
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
 body{font-family:'DM Sans',sans-serif;background:var(--gris);color:var(--texte);font-size:16px;line-height:1.7}
@@ -96,6 +133,33 @@ footer strong{color:var(--jaune)}
 </style>
 </head>
 <body>
+
+<!-- ── MOT DE PASSE ── -->
+<div id="mdp-overlay">
+  <div id="mdp-box">
+    <div class="logo-mdp">SMM MONTROUGE · BADMINTON</div>
+    <h2>Assemblée Générale 2026</h2>
+    <p>Veuillez saisir le mot de passe pour accéder à cette page.</p>
+    <input id="mdp-input" type="password" placeholder="Mot de passe"
+           onkeydown="if(event.key==='Enter')verifier()"/>
+    <button id="mdp-btn" onclick="verifier()">Accéder</button>
+    <p id="mdp-err">Mot de passe incorrect. Veuillez réessayer.</p>
+  </div>
+</div>
+
+<script>
+function verifier(){
+  var v=document.getElementById('mdp-input').value;
+  if(v==='AGSMM2026'){
+    document.getElementById('mdp-overlay').style.display='none';
+  } else {
+    document.getElementById('mdp-err').style.display='block';
+    document.getElementById('mdp-input').value='';
+    document.getElementById('mdp-input').focus();
+  }
+}
+</script>
+<!-- ── FIN MOT DE PASSE ── -->
 <header>
   <div class="logo-hdr">SMM MONTROUGE · BADMINTON</div>
   <h1>Assemblée Générale<br><span>5 Juin 2026</span></h1>
